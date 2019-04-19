@@ -34,7 +34,7 @@ def main():
 
     ## pick word
     wordInd = random.randint(0,len(list(listing[category])))
-    word = listing[category][wordInd].toLowerCase()
+    word = listing[category][wordInd].lower()
 
     ##convert to empty strings
     display = formBoard(word)
@@ -42,7 +42,14 @@ def main():
     ## print a display
     print_board(category,display)
 
-    input("Pick a letter")
+    playerInput = input("Pick a letter: ")
+
+    if playerInput in word:
+        for i in range(0, len(word)):
+            if(playerInput == word[i]):
+                display[i] = playerInput
+
+    print_board(category,display)
 
 if __name__ == "__main__":
     main()
